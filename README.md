@@ -1,7 +1,5 @@
 start of Kotlin
 
-hello Git-world!!
-
 #### REPOSITORY VIEW
 ```
 Root

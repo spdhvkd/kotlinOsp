@@ -9,8 +9,8 @@ public class TestDBConnect {
 
 	String driver		= "org.mariadb.jdbc.Driver";
 	String url		   = "jdbc:mariadb://localhost:3306/board";
-	String uId		   = "root";
-	String uPwd		  = "1004";
+	String uId		   = "id";
+	String uPwd		  = "pwd";
 
 	Connection			   con;
 	PreparedStatement		pstmt;
@@ -59,6 +59,3 @@ public class TestDBConnect {
 	}
 
 }
-
-//		TestDBConnect dbm   = new TestDBConnect();
-// 		db.select() ;

@@ -1,4 +1,3 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,8 +8,8 @@ public class TestDBConnect {
 
 	String driver		= "org.mariadb.jdbc.Driver";
 	String url		   = "jdbc:mariadb://localhost:3306/board";
-	String uId		   = "Admin";
-	String uPwd		  = "Passwd";
+	String uId		   = "id";
+	String uPwd		  = "pwd";
 
 	Connection			   con;
 	PreparedStatement		pstmt;
@@ -29,10 +28,11 @@ public class TestDBConnect {
 
 	public BoardVO select(){
 		BoardVO vo = new BoardVO() ;
-		String sql	= "select * from board";
 		try {
+			String sql	= "select * from board";
 			pstmt				= con.prepareStatement(sql);
 			rs				   = pstmt.executeQuery();
+
 			while(rs.next()){
 
 				int seq = rs.getInt("seq") ;

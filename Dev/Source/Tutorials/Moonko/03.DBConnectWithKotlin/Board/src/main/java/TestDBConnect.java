@@ -9,8 +9,8 @@ public class TestDBConnect {
 
 	String driver		= "org.mariadb.jdbc.Driver";
 	String url		   = "jdbc:mariadb://localhost:3306/board";
-	String uId		   = "Admin";
-	String uPwd		  = "Passwd";
+	String uId		   = "root";
+	String uPwd		  = "1004";
 
 	Connection			   con;
 	PreparedStatement		pstmt;
@@ -27,14 +27,14 @@ public class TestDBConnect {
 		catch (SQLException e) { System.out.println("데이터 베이스 접속 실패"); }
 	}
 
-	public BoardVO select(){
-		BoardVO vo = new BoardVO() ;
+	public boardVO select(){
+		boardVO vo = new boardVO() ;
+		vo.setSeq(1);
 		String sql	= "select * from board";
 		try {
 			pstmt				= con.prepareStatement(sql);
 			rs				   = pstmt.executeQuery();
 			while(rs.next()){
-
 				int seq = rs.getInt("seq") ;
 				String writer = rs.getString("writer") ;
 				String title = rs.getString("title") ;
@@ -54,6 +54,11 @@ public class TestDBConnect {
 				vo.setWriteDate(writeDate) ;
 			}
 		} catch (SQLException e) { System.out.println("쿼리 수행 실패"); }
+
 		return vo ;
 	}
+
 }
+
+//		TestDBConnect dbm   = new TestDBConnect();
+// 		db.select() ;

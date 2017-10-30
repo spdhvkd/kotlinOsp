@@ -11,6 +11,7 @@ class HomeController : HttpServlet() {
 		var boardVo = testDBConnect.select()
 		var items = listOf<String>(boardVo.seq.toString(), boardVo.title, boardVo.contents, boardVo.writer, boardVo.writeDate)
 		res.writer.write(items.joinToString("\n/ "))
+		//한글 깨지는 현상 FIX
 	}
 }
 

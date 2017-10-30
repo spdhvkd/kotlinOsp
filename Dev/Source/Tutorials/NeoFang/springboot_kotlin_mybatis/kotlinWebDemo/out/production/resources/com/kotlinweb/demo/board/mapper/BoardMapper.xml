@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kotlinweb.demo.board.mapper.BoardMapper">
+
+    <select id="getBoardList" resultType="com.kotlinweb.demo.domain.Board">
+        SELECT seq,title, content, ymdFrt FROM board
+    </select>
+
+    <select id="getBoard" parameterType="Integer" resultType="com.kotlinweb.demo.domain.Board">
+        SELECT seq,title, content, ymdFrt FROM board WHERE seq = #{seq}
+     </select>
+
+
+</mapper>

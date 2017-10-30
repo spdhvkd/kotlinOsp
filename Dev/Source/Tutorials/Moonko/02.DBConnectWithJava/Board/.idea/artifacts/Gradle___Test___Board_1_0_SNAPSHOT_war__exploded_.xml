@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Gradle : Test : Board-1.0-SNAPSHOT.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/libs/exploded/Board-1.0-SNAPSHOT.war</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$">
+        <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/Board-1.0-SNAPSHOT.war/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Board_main/web/Web Gradle : Board-1.0-SNAPSHOT.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Board_main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/out/production/resources" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.4-2" />
+          <element id="library" level="project" name="Gradle: org.mariadb.jdbc:mariadb-java-client:1.1.7" />
+          <element id="library" level="project" name="Gradle: javax:javaee-api:7.0" />
+          <element id="library" level="project" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.1.4-2" />
+          <element id="library" level="project" name="Gradle: net.java.dev.jna:jna:3.3.0" />
+          <element id="library" level="project" name="Gradle: net.java.dev.jna:jna:platform:3.3.0" />
+          <element id="library" level="project" name="Gradle: com.sun.mail:javax.mail:1.5.0" />
+          <element id="library" level="project" name="Gradle: org.jetbrains:annotations:13.0" />
+          <element id="library" level="project" name="Gradle: javax.activation:activation:1.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

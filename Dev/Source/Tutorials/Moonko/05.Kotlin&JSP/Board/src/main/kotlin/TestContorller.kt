@@ -6,15 +6,19 @@ import javax.servlet.http.HttpServletResponse
 
 @WebServlet(name = "Test", value = "/getBoard")
 class HomeController : HttpServlet() {
-	override fun doGet(req: HttpServletRequest, res: HttpServletResponse) {
 
-		// DB Connect를 기존 자바 소스로 구현
+	override fun doGet(req: HttpServletRequest, res: HttpServletResponse) {
+		var dBConnect = TestDBConnect()
 		res.setContentType("text/html; charset=UTF-8")
 		res.setCharacterEncoding("UTF-8")
-		var testDBConnect = TestDBConnect()
-		var boardVo = testDBConnect.select()
 
+		var boardVo = dBConnect.select(dBConnect.getConnection())
 		var items = listOf<String>(boardVo.seq.toString(), boardVo.title, boardVo.contents, boardVo.writer, boardVo.writeDate)
-		res.writer.write(items.joinToString("\n/ "))
+
+		var dispatcher = req.getRequestDispatcher("index.jsp")
+		// JSP에서 제공하는 request객체 이용가능
+		req.setAttribute("obj", items.joinToString("\n/ "))
+
+		dispatcher.forward(req, res)
 	}
 }

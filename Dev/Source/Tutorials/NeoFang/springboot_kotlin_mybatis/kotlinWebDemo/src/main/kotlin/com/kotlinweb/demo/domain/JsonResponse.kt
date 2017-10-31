@@ -1,4 +1,4 @@
 package com.kotlinweb.demo.domain
 
-data class jsonResponse(val status: String = "",
-                        val data : Any) {}
+data class JsonResponse(var status: String = "",
+                        var data : Any? = null)

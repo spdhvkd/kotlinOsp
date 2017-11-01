@@ -11,7 +11,7 @@
         <script src="/script/jquery/jquery.min.js"></script>
         <script src="/script/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript">
-            function updateBoard(){
+            function saveBoard(){
                 var formData = new FormData(document.getElementById("_frmBoard"));
                 var jsonObject = {};
                 formData.forEach(function(value, key){
@@ -19,44 +19,16 @@
                 });
 
                 $.ajax({
-                    url : "/board/update",
+                    url : "/board/save",
                     data : JSON.stringify(jsonObject),
-                    method : "put",
+                    method : "post",
                     contentType : "application/json",
                     dataType: "json",
                     aSync : false,
                     success : function (result) {
                         var status = result.status;
                         if(status == "00"){
-                            alert("정상적으로 수정되었습니다.");
-                        }else {
-                            alert("오류가 발생했습니다.");
-                        }
-                    },
-                    error : function (e) {
-                        alert(e.responseText);
-                    }
-                });
-            }
-
-            function deleteBoard(){
-                var formData = new FormData(document.getElementById("_frmBoard"));
-                var jsonObject = {};
-                formData.forEach(function(value, key){
-                    jsonObject[key] = value;
-                });
-
-                $.ajax({
-                    url : "/board/delete",
-                    data : JSON.stringify(jsonObject),
-                    method : "delete",
-                    contentType : "application/json",
-                    dataType: "json",
-                    aSync : false,
-                    success : function (result) {
-                        var status = result.status;
-                        if(status == "00"){
-                            alert("정상적으로 삭제되었습니다.");
+                            alert("정상적으로 저장되었습니다.");
                             location.href = "/";
                         }else {
                             alert("오류가 발생했습니다.");
@@ -80,25 +52,14 @@
 
             <tbody>
                 <tr>
-                    <th>seq</th>
-                    <td>
-                        <c:out value="${board.seq}" />
-                        <input type="hidden" class="form-control" name="seq" value="${board.seq}">
-                    </td>
+                    <th>제목</th><td><input type="text" class="form-control" name="title"> </td>
                 </tr>
                 <tr>
-                    <th>제목</th><td><input type="text" class="form-control" name="title" value="${board.title}"> </td>
-                </tr>
-                <tr>
-                    <th>등록일</th><td><c:out value="${board.ymdFrt}" /></td>
-                </tr>
-                <tr>
-                    <th>내용</th><td><input type="text" class="form-control" name="content" value="${board.content}"></td>
+                    <th>내용</th><td><input type="text" class="form-control" name="content"></td>
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-primary" onclick="updateBoard();" style="float:right;">수정</button>
-        <button class="btn btn-primary" onclick="deleteBoard();" style="float:right;">삭제</button>
+        <button class="btn btn-primary" onclick="saveBoard();" style="float:right;">저장</button>
         <button class="btn btn-primary" onclick="javascript:location.href='/'" style="float:right;">목록</button>
     </form>
 </div>

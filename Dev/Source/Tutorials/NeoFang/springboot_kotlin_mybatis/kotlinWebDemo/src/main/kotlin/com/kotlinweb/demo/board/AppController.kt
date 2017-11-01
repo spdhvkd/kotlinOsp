@@ -3,14 +3,11 @@ package com.kotlinweb.demo.board
 
 import com.kotlinweb.demo.board.service.BoardService
 import com.kotlinweb.demo.domain.Board
+import com.kotlinweb.demo.domain.JsonResponse
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.ModelAndView
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+
 
 @RestController
 class AppController {
@@ -18,17 +15,8 @@ class AppController {
     var boardService: BoardService? = null
     @Autowired set
 
-    @RequestMapping(value = "/board")
+    @RequestMapping(value = "/")
     fun board(board: Board,mav: ModelAndView):ModelAndView{
-
-        val current = LocalDateTime.now()
-
-        val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
-        val formatted = current.format(formatter)
-
-        board.title = "리퀘스트"
-        board.content = "바디바디바디"
-        board.ymdFrt = formatted
 
         mav.addObject("list",boardService!!.getBoardList())
         mav.viewName = "index"
@@ -40,5 +28,40 @@ class AppController {
         mav.addObject("board",boardService!!.getBoard(seq))
         mav.viewName = "detail"
         return mav
+    }
+
+    @RequestMapping(value = "/board/new", method = arrayOf(RequestMethod.GET))
+    fun newBoard(mav : ModelAndView):ModelAndView{
+        mav.viewName = "newBoard"
+        return mav
+    }
+
+    @RequestMapping(value = "/board/save", method = arrayOf(RequestMethod.POST))
+    fun saveBoard(@RequestBody board : Board, jsonResponse: JsonResponse):JsonResponse{
+
+        boardService!!.saveBoard(board)
+        jsonResponse.status = "00"
+
+        return jsonResponse
+    }
+
+    @RequestMapping(value = "/board/update", method = arrayOf(RequestMethod.PUT))
+    fun updateBoard(@RequestBody board : Board, jsonResponse: JsonResponse):JsonResponse{
+
+        boardService!!.updateBoard(board)
+
+        jsonResponse.status = "00"
+
+        return jsonResponse
+    }
+
+    @RequestMapping(value = "/board/delete", method = arrayOf(RequestMethod.DELETE))
+    fun deleteBoard(@RequestBody board : Board, jsonResponse: JsonResponse):JsonResponse{
+
+        boardService!!.deleteBoard(board.seq)
+
+        jsonResponse.status = "00"
+
+        return jsonResponse
     }
 }

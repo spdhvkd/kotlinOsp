@@ -4,4 +4,5 @@
 **/build/**
 **/.idea/**
 .DS_Store
-*\.DS_Store
+Inform/.DS_Store
+.*

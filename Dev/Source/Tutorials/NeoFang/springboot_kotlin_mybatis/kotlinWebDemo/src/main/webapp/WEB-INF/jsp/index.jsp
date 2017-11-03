@@ -17,6 +17,13 @@
                 frmBoard.method="get";
                 frmBoard.submit();
             }
+
+            function newArticle(){
+                var frmBoard = document.getElementById("_frmBoard");
+                frmBoard.action="/board/new"
+                frmBoard.method="get";
+                frmBoard.submit();
+            }
         </script>
 </head>
 <body>
@@ -40,6 +47,7 @@
                 </c:forEach>
             </tbody>
         </table>
+        <button class="btn btn-primary" onclick="newArticle();" style="float:right;">새글</button>
     </form>
 </div>
 

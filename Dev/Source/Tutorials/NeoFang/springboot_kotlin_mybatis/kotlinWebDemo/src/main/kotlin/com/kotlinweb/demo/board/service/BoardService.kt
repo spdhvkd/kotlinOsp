@@ -8,4 +8,8 @@ interface BoardService {
     fun getBoardList():List<Board>
 
     fun getBoard(seq:Int):Board
+
+    fun updateBoard(board:Board)
+
+    fun deleteBoard(seq:Int)
 }

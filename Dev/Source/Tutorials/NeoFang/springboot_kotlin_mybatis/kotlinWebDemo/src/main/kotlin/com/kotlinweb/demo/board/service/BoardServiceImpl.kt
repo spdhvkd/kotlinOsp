@@ -9,27 +9,27 @@ import org.springframework.stereotype.Service
 
 @Service("BoardService")
 class BoardServiceImpl : BoardService  {
+    @Autowired
+    lateinit var boardMapper: BoardMapper
 
-    var boardMapper: BoardMapper? = null
-      @Autowired set
 
     override fun saveBoard(board: Board) {
-        boardMapper!!.saveBoard(board)
+        boardMapper.saveBoard(board)
     }
 
     override fun getBoardList(): List<Board> {
-        return boardMapper!!.getBoardList()
+        return boardMapper.getBoardList()
     }
 
     override fun getBoard(seq:Int): Board {
-        return boardMapper!!.getBoard(seq)
+        return boardMapper.getBoard(seq)
     }
 
     override fun updateBoard(board: Board) {
-        boardMapper!!.updateBoard(board)
+        boardMapper.updateBoard(board)
     }
 
     override fun deleteBoard(seq: Int) {
-        boardMapper!!.deleteBoard(seq)
+        boardMapper.deleteBoard(seq)
     }
 }

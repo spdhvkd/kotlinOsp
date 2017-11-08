@@ -11,21 +11,21 @@ import org.springframework.web.servlet.ModelAndView
 
 @RestController
 class AppController {
+    @Autowired
+    lateinit var boardService: BoardService
 
-    var boardService: BoardService? = null
-    @Autowired set
 
     @RequestMapping(value = "/")
     fun board(board: Board,mav: ModelAndView):ModelAndView{
 
-        mav.addObject("list",boardService!!.getBoardList())
+        mav.addObject("list",boardService.getBoardList())
         mav.viewName = "index"
         return mav
     }
 
     @RequestMapping(value = "/board/get/{seq}", method = arrayOf(RequestMethod.GET))
     fun getBoard(@PathVariable(value = "seq") seq:Int, mav: ModelAndView):ModelAndView{
-        mav.addObject("board",boardService!!.getBoard(seq))
+        mav.addObject("board",boardService.getBoard(seq))
         mav.viewName = "detail"
         return mav
     }
@@ -39,7 +39,7 @@ class AppController {
     @RequestMapping(value = "/board/save", method = arrayOf(RequestMethod.POST))
     fun saveBoard(@RequestBody board : Board, jsonResponse: JsonResponse):JsonResponse{
 
-        boardService!!.saveBoard(board)
+        boardService.saveBoard(board)
         jsonResponse.status = "00"
 
         return jsonResponse
@@ -48,7 +48,7 @@ class AppController {
     @RequestMapping(value = "/board/update", method = arrayOf(RequestMethod.PUT))
     fun updateBoard(@RequestBody board : Board, jsonResponse: JsonResponse):JsonResponse{
 
-        boardService!!.updateBoard(board)
+        boardService.updateBoard(board)
 
         jsonResponse.status = "00"
 
@@ -58,7 +58,7 @@ class AppController {
     @RequestMapping(value = "/board/delete", method = arrayOf(RequestMethod.DELETE))
     fun deleteBoard(@RequestBody board : Board, jsonResponse: JsonResponse):JsonResponse{
 
-        boardService!!.deleteBoard(board.seq)
+        boardService.deleteBoard(board.seq)
 
         jsonResponse.status = "00"
 

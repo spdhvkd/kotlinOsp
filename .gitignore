@@ -3,4 +3,6 @@
 **/.gradle/**
 **/build/**
 **/.idea/**
-*.
+.DS_Store
+Inform/.DS_Store
+.*

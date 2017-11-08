@@ -29,7 +29,7 @@ Root
 ```
 
 1. Kotlin 개요 PPT <br />
-    - [x] 완료
+    - [x] 완료
 2. 게시판 Kotlin 서버 개발(문법 적응) <br />
     - [x] 완료
 3. Android Application Development with Kotlin <br />
